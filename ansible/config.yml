@@ -9,7 +9,6 @@
 # gunicorn_port: 8000
 # gunicorn_workers: 16 # should be 2 * number of cores
 # path_to_502: "/static/other/502.html"
-# path_to_robots_txt: "/static/other/robots.txt"
 
 
 app_name: "{{ app_name_base }}"
@@ -24,4 +23,3 @@ virtualenv_path: "{{ app_path }}/env"
 requirements_path: "{{ project_root }}/requirements.txt"
 gunicorn_service_name: "gunicorn_{{ app_name }}"
 absolute_path_to_502: "{{project_root}}{{path_to_502}}"
-absolute_path_to_robots_txt: "{{project_root}}{{path_to_robots_txt}}"
