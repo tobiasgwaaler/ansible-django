@@ -1,0 +1,25 @@
+- name: nginx
+  hosts: all
+  user: root
+
+  vars_files:
+    - "../../config.yml" # the user-generated config
+    - config.yml
+
+
+    - name: start nginx as a service
+      service: name=nginx state=started
+
+    - name: create nginx.conf
+      template: src=templates/nginx.conf dest=/etc/nginx/nginx.conf
+
+    - name: setup nginx vhost
+      template: src=templates/nginx_vhost.conf dest=/etc/nginx/conf.d/{{ app_name }}.conf
+
+    - name: reload nginx
+      command: nginx -s reload
+      sudo: yes
+
+    - name: copy gunicorn upstart script
+      template: src=templates/gunicorn_upstart.conf dest=/etc/init/{{ gunicorn_service_name }}.conf
+      sudo: yes

@@ -1,0 +1,9 @@
+#! /bin/bash
+pushd .
+cd ansible
+ansible-playbook aptget.yml
+ansible-playbook users.yml
+ansible-playbook nginx.yml
+ansible-playbook database.yml
+ansible-playbook app.yml
+popd

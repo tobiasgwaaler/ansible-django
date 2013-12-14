@@ -1,0 +1,6 @@
+#! /bin/bash
+
+pushd . 
+cd ansible
+ansible-playbook deploy.yml --ask-sudo-pass
+popd

@@ -1,0 +1,13 @@
+- name: Create app user
+  hosts: all
+  user: root
+  vars_files:
+    - "../../config.yml" # the user-generated config
+    - config.yml
+
+    - name: setup user {{ app_user }}
+      user: name={{ app_user }} shell=/bin/zsh password={{ sudo_pass }} group=sudo
+
+    - name: setup authorized_keys for ssh access
+      authorized_key: user={{ app_user }}
+                      key="{{ ssh_keys }}"

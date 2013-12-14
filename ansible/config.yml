@@ -1,0 +1,27 @@
+# example
+# domain: "mawa.no"
+# app_name_base: "mawa"
+# sudo_pass: "" # Password generation: 'openssl passwd -salt <salt> -1 <passord>'
+# pgpass: "" # postgres password
+# ssh_keys: "" # your public key
+# django_settings_module: "mawa.settings.prod_settings" # this is what you would pass to --settings when running ./manage.py
+# host_ip: "212.71.239.205" 
+# gunicorn_port: 8000
+# gunicorn_workers: 16 # should be 2 * number of cores
+# path_to_502: "/static/other/502.html"
+# path_to_robots_txt: "/static/other/robots.txt"
+
+
+app_name: "{{ app_name_base }}"
+app_user: "{{ app_name }}"
+home_path: "/home/{{ app_user }}"
+app_path: "{{ home_path }}/app"
+git_local_repo: "{{ home_path }}/repo.git"
+project_root: "{{ app_path }}/repo"
+static_files_path: "{{ project_root }}/static/"
+media_files_path: "{{ project_root }}/media/"
+virtualenv_path: "{{ app_path }}/env"
+requirements_path: "{{ project_root }}/requirements.txt"
+gunicorn_service_name: "gunicorn_{{ app_name }}"
+absolute_path_to_502: "{{project_root}}{{path_to_502}}"
+absolute_path_to_robots_txt: "{{project_root}}{{path_to_robots_txt}}"

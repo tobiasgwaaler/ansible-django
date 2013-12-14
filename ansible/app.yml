@@ -1,0 +1,22 @@
+- name: Setup app
+  hosts: all
+  user: "{{ app_user }}"
+  vars_files: 
+    - "../../config.yml"
+    - config.yml
+
+  tasks:
+    - name: Create directory for $app_path
+      file: path={{ app_path }} state=directory
+
+    - name: Create directory for bare git repo
+      file: path={{git_local_repo}} state=directory
+
+    - name: Init git bare repository
+      command: git init --bare chdir={{ git_local_repo }} creates={{ git_local_repo }}/config
+
+    #- name: Configure git repo to accept all incomming data
+    #  lineinfile: dest={{ git_local_repo }}/config regexp=
+
+    - debug: msg="git remote add {{app_user}} {{ app_user }}@{{ ansible_eth0.ipv4.address }}:{{ git_local_repo }}  &&  git push -u {{app_user}} master"
+

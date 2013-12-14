@@ -1,0 +1,38 @@
+- name: Deploy
+  hosts: all
+  user: "{{ app_user }}"
+  vars_files:
+    - "../../config.yml" # the user-generated config
+    - config.yml
+
+  tasks:
+    - name: stop app
+      command: initctl stop {{ gunicorn_service_name }}
+      sudo: yes
+      ignore_errors: yes
+
+    - name: Fetch newest version of the app using git
+      git:  repo=file://{{git_local_repo}}
+            dest={{project_root}}
+
+    - name: setup virtualenv with dependencies from requirements.txt
+      pip: virtualenv={{virtualenv_path}} requirements={{requirements_path}}
+
+    - name: syncdb
+      django_manage: command=syncdb 
+                     app_path={{ project_root }}
+                     virtualenv={{ virtualenv_path }} settings={{ django_settings_module }}
+
+    - name: migrate db
+      django_manage: command=migrate
+                     app_path={{ project_root }}
+                     virtualenv={{ virtualenv_path }} settings={{ django_settings_module }}
+
+    - name: collect static files
+      django_manage: command=collectstatic 
+                     app_path={{ project_root }}
+                     virtualenv={{ virtualenv_path }} settings={{ django_settings_module }}
+
+    - name: start app
+      sudo: yes
+      command: initctl start {{ gunicorn_service_name }}

@@ -1,0 +1,37 @@
+- name: Install dependencies
+  hosts: all
+  user: root
+  tasks:
+
+    - name: update system
+      apt: upgrade=full update_cache=yes
+
+    - name: install emacs
+      apt: pkg=emacs update_cache=yes 
+
+    - name: intall zsh
+      apt: pkg=zsh update_cache=yes 
+
+    - name: install nginx
+      apt: pkg=nginx update_cache=yes
+
+    - name: install python 2.7
+      apt: pkg=python2.7 update_cache=yes
+
+    - name: install virtualenv
+      apt: pkg=python-virtualenv update_cache=yes
+
+    - name: install python-dev
+      apt: pkg=python-dev update_cache=yes
+
+    - name: Install git
+      apt: pkg=git update_cache=yes
+
+    - name: install postgres  
+      apt: pkg=postgresql update_cache=yes
+
+    - name: install postgres dev lib
+      apt: pkg=libpq-dev update_cache=yes
+
+    - name: install postgres libs for python
+      apt: pkg=python-psycopg2 update_cache=yes
