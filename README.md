@@ -20,11 +20,11 @@ and ``MEDIA_URL = '/media/'``
 NB! To avoid overwriting all your uploaded media files whenever you deploy, make sure the "media" directory is in your .gitignore (and that the .gitignore-file is tracked by git).
 
 To start using ansible-django you can either fork this repo, or add it as a submodule to a django project.
-1. git submodule add git@github.com:tobiasgwaaler/ansible-django.git
+1. ``git submodule add git@github.com:tobiasgwaaler/ansible-django.git``
 or
-1. git clone git@github.com:tobiasgwaaler/ansible-django.git
-2. Add "ansible-django" and ".gitsubmodules" to the .gitignore in the parent folder
-3. Create "config.yml" and "hosts" with project-specific configurations in the parent folder
+1. ``git clone git@github.com:tobiasgwaaler/ansible-django.git``
+2. Add "ansible-django" and ``.gitsubmodules`` to the ``.gitignore`` in the parent folder
+3. Create ``config.yml`` and ``hosts`` with project-specific configurations in the parent folder
 
 
 
