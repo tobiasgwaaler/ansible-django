@@ -1,8 +1,8 @@
 - name: Install dependencies
   hosts: all
   user: root
-  tasks:
 
+  tasks:
     - name: update system
       apt: upgrade=full update_cache=yes
 

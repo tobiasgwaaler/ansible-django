@@ -5,6 +5,7 @@
     - "../../config.yml" # the user-generated config
     - config.yml
 
+  tasks:
     - name: setup user {{ app_user }}
       user: name={{ app_user }} shell=/bin/zsh password={{ sudo_pass }} group=sudo
 

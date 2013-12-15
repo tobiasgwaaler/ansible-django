@@ -6,7 +6,7 @@
     - "../../config.yml" # the user-generated config
     - config.yml
 
-
+  tasks:
     - name: start nginx as a service
       service: name=nginx state=started
 
