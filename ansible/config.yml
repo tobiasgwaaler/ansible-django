@@ -1,7 +1,7 @@
 # example
 # domain: "mawa.no"
 # app_name_base: "mawa"
-# sudo_pass: "" # Password generation: 'openssl passwd -salt <salt> -1 <passord>'
+# sudo_pass: "" # Password generation: 'openssl passwd -salt <salt> -1 <password>'
 # pgpass: "" # postgres password
 # ssh_keys: "" # your public key
 # django_settings_module: "mawa.settings.prod_settings" # this is what you would pass to --settings when running ./manage.py
