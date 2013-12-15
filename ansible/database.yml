@@ -6,23 +6,9 @@
     - "../../config.yml" # the user-generated config
     - config.yml
 
-
+  tasks:
     - name: start postgresql
       service: name=postgresql state=started
 
     - name: enable ssh login for postgres user
       authorized_key: user=postgres  key="{{ ssh_keys }}"
-
-- name: Setup dbs
-  hosts: all
-  user: postgres
-  vars_files:
-    - "../../config.yml"
-    - config.yml
-
-  tasks:
-    - name: create database users
-      postgresql_user: name=$app_user password=$pgpass
-
-    - name: create databases 
-      postgresql_db: name=$app_user owner=$app_user state=present

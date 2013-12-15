@@ -5,5 +5,6 @@ ansible-playbook aptget.yml
 ansible-playbook users.yml
 ansible-playbook nginx.yml
 ansible-playbook database.yml
+ansible-playbook setupdb.yml
 ansible-playbook app.yml
 popd
