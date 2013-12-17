@@ -29,6 +29,9 @@
 
     - name: install postgres  
       apt: pkg=postgresql update_cache=yes
+      
+    - name: install postgresql-contrib
+      apt: pkg=postgresql-contrib update_cache=yes
 
     - name: install postgres dev lib
       apt: pkg=libpq-dev update_cache=yes
