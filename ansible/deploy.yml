@@ -27,6 +27,7 @@
       django_manage: command=migrate
                      app_path={{ project_root }}
                      virtualenv={{ virtualenv_path }} settings={{ django_settings_module }}
+      ignore_errors: {{ ignore_migrate_errors }}
 
     - name: collect static files
       django_manage: command=collectstatic 

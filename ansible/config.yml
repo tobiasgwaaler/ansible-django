@@ -9,6 +9,7 @@
 # gunicorn_port: 8000
 # gunicorn_workers: 16 # should be 2 * number of cores
 # path_to_502: "/static/other/502.html"
+# ignore_migrate_errors: yes # yes or no. If you're using South for migrations, this should be set to no
 
 
 app_name: "{{ app_name_base }}"
