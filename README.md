@@ -6,6 +6,8 @@ This script uses Ansible to install some of the most common dependencies for a D
 
 Developed and tested on Ubuntu 12.04 LTS, but might work on other versions of Ubuntu (as well as other distros using apt).
 
+Disclaimer! This is an immature project and its documentation is incomplete.
+
 ## Security issues ##
 At this point using ansible-django to setup your server(s) will result in an insecure server:
 - SSH-access as ``root`` and ``postgres`` is permitted.
